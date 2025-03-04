@@ -1,0 +1,48 @@
+<div class="overflow-hidden">
+    <table class="min-w-full border border-gray-300 rounded-lg hidden md:table">
+      <thead class="general-bg text-white">
+        <tr>
+          <th class="px-4 py-2 text-left sm:text-center">Ciudad</th>
+          <th class="px-4 py-2 text-left sm:text-center">Temperatura</th>
+          <th class="px-4 py-2 text-left sm:text-center">Estado</th>
+          <th class="px-4 py-2 text-left sm:text-center">Hora Local</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-700">
+        <tr *ngFor="let country of paginatedRecords" class="border-b cursor-pointer hover:bg-gray-100" (click)="viewCountryDetail(country)">
+          <td class="px-4 py-2 text-left sm:text-center">{{ country.location?.name }}</td>
+          <td class="px-4 py-2 text-left sm:text-center">{{ country.current?.heatindex_c }} °C - {{ country.current?.heatindex_f }} °F</td>
+          <td class="px-4 py-2 text-left sm:text-center">{{ country.current?.condition?.text }}</td>
+          <td class="px-4 py-2 text-left sm:text-center">{{ country.location?.localtime }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="md:hidden">
+      <div *ngFor="let country of paginatedRecords" class="bg-white shadow-md rounded-lg mb-4 p-4" (click)="viewCountryDetail(country)">
+        <div class="text-gray-700">
+          <h3 class="font-bold">{{ country.location?.name }}</h3>
+          <p><strong>Temperatura:</strong> {{ country.current?.heatindex_c }} °C - {{ country.current?.heatindex_f }} °F</p>
+          <p><strong>Estado:</strong> {{ country.current?.condition?.text }}</p>
+          <p><strong>Hora Local:</strong> {{ country.location?.localtime }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<div class="flex justify-center mt-4">
+    <button (click)="prevPage()" [disabled]="currentPage === 1"
+        class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mx-1">
+        Anterior
+    </button>
+
+    <span class="px-4 py-2 general-bg text-white rounded-lg">
+         {{ currentPage }} de {{ totalPages }}
+    </span>
+
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages"
+        class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mx-1">
+        Siguiente
+    </button>
+</div>
+
+

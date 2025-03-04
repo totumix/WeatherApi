@@ -1,0 +1,81 @@
+<div *ngFor="let favorite of paginatedFavorites ; let i = index" class="shadow p-5">
+    <div class="flex justify-between items-center">
+        <div class="text-center w-full">
+            <h2 class="text-2xl font-bold text-gray-800">
+                {{ favorite?.location?.name || 'Ubicación desconocida' }},
+                {{ favorite?.location?.region || '-' }}
+            </h2>
+            <p class="text-gray-500">{{ favorite?.location?.country || 'País desconocido' }}</p>
+            <p class="text-gray-500 text-sm">{{ favorite?.location?.localtime || 'Hora no disponible' }}</p>
+        </div>
+        <button class="text-yellow-500 text-2xl focus:outline-none">
+            <span [class.text-gray-300]="false">★</span>
+        </button>
+    </div>
+
+    <div *ngIf="favorite?.current" class="flex items-center justify-between bg-blue-50 p-4 rounded-lg">
+        <div class="flex items-center space-x-3">
+            <img *ngIf="favorite?.current?.condition?.icon" [src]="favorite?.current?.condition?.icon"
+                [alt]="favorite?.current?.condition?.text || 'Sin descripción'" class="w-12 h-12">
+            <div>
+                <p class="text-lg font-semibold text-gray-800">
+                    {{ favorite?.current?.condition?.text || 'Condición desconocida' }}
+                </p>
+                <p class="text-gray-500">
+                    Temp: {{ favorite?.current?.temp_c ?? 'N/A' }}°C ({{ favorite?.current?.temp_f ?? 'N/A' }}°F)
+                </p>
+            </div>
+        </div>
+        <p class="text-4xl font-bold text-blue-600">{{ favorite?.current?.temp_c ?? '--' }}°C</p>
+    </div>
+
+    <div class="mt-4 w-full justify-center flex">
+        <span (click)="toggleAccordion(i)" class="font-semibold cursor-pointer text-gray-800 hover:underline">Más
+            detalles</span>
+    </div>
+
+    <div *ngIf="accordionStates[i]" class="grid grid-cols-2 gap-4 text-gray-700 mt-2">
+        <div>
+            <p class="font-semibold">Sensación térmica:</p>
+            <p>{{ favorite?.current?.feelslike_c ?? 'N/A' }}°C</p>
+        </div>
+        <div>
+            <p class="font-semibold">Humedad:</p>
+            <p>{{ favorite?.current?.humidity ?? 'N/A' }}%</p>
+        </div>
+        <div>
+            <p class="font-semibold">Viento:</p>
+            <p>
+                {{ favorite?.current?.wind_kph ?? 'N/A' }} km/h
+                ({{ favorite?.current?.wind_dir || 'Dirección desconocida' }})
+            </p>
+        </div>
+        <div>
+            <p class="font-semibold">Presión:</p>
+            <p>{{ favorite?.current?.pressure_mb ?? 'N/A' }} mb</p>
+        </div>
+        <div>
+            <p class="font-semibold">Precipitación:</p>
+            <p>{{ favorite?.current?.precip_mm ?? 'N/A' }} mm</p>
+        </div>
+        <div>
+            <p class="font-semibold">Visibilidad:</p>
+            <p>{{ favorite?.current?.vis_km ?? 'N/A' }} km</p>
+        </div>
+    </div>
+</div>
+<div class="flex justify-center mt-4">
+    <button (click)="prevPage()" [disabled]="currentPage === 1"
+        class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mx-1">
+        Anterior
+    </button>
+
+    <span class="px-4 py-2 general-bg text-white rounded-lg">
+        {{ currentPage }} de {{ totalPages }}
+    </span>
+
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages"
+        class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mx-1">
+        Siguiente
+    </button>
+</div>

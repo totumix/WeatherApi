@@ -1,0 +1,69 @@
+<div *ngIf="countryDetail()">
+    <div class="flex justify-between items-center">
+        <div class="text-center w-full">
+            <h2 class="text-2xl font-bold text-gray-800">
+                {{ countryDetail()?.location?.name || 'Ubicación desconocida' }},
+                {{ countryDetail()?.location?.region || '-' }}
+            </h2>
+            <p class="text-gray-500">{{ countryDetail()?.location?.country || 'País desconocido' }}</p>
+            <p class="text-gray-500 text-sm">{{ countryDetail()?.location?.localtime || 'Hora no disponible' }}</p>
+        </div>
+        <button (click)="saveToFavorites()" class="text-yellow-500 text-2xl focus:outline-none">
+            <span [class.text-gray-300]="!isFavorite">★</span>
+        </button>
+    </div>
+
+    <div *ngIf="countryDetail()?.current" class="flex items-center justify-between bg-blue-50 p-4 rounded-lg">
+        <div class="flex items-center space-x-3">
+            <img *ngIf="countryDetail()?.current?.condition?.icon" [src]="countryDetail()?.current?.condition?.icon"
+                [alt]="countryDetail()?.current?.condition?.text || 'Sin descripción'" class="w-12 h-12">
+            <div>
+                <p class="text-lg font-semibold text-gray-800">
+                    {{ countryDetail()?.current?.condition?.text || 'Condición desconocida' }}
+                </p>
+                <p class="text-gray-500">
+                    Temp: {{ countryDetail()?.current?.temp_c ?? 'N/A' }}°C ({{ countryDetail()?.current?.temp_f ??
+                    'N/A'
+                    }}°F)
+                </p>
+            </div>
+        </div>
+        <p class="text-4xl font-bold text-blue-600">{{ countryDetail()?.current?.temp_c ?? '--' }}°C</p>
+    </div>
+
+    <div  class="grid grid-cols-2 gap-4 text-gray-700">
+        <div>
+            <p class="font-semibold">Sensación térmica:</p>
+            <p>{{ countryDetail()?.current?.feelslike_c ?? 'N/A' }}°C</p>
+        </div>
+        <div>
+            <p class="font-semibold">Humedad:</p>
+            <p>{{ countryDetail()?.current?.humidity ?? 'N/A' }}%</p>
+        </div>
+        <div>
+            <p class="font-semibold">Viento:</p>
+            <p>
+                {{ countryDetail()?.current?.wind_kph ?? 'N/A' }} km/h
+                ({{ countryDetail()?.current?.wind_dir || 'Dirección desconocida' }})
+            </p>
+        </div>
+        <div>
+            <p class="font-semibold">Presión:</p>
+            <p>{{ countryDetail()?.current?.pressure_mb ?? 'N/A' }} mb</p>
+        </div>
+        <div>
+            <p class="font-semibold">Precipitación:</p>
+            <p>{{ countryDetail()?.current?.precip_mm ?? 'N/A' }} mm</p>
+        </div>
+        <div>
+            <p class="font-semibold">Visibilidad:</p>
+            <p>{{ countryDetail()?.current?.vis_km ?? 'N/A' }} km</p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!countryDetail()" class="text-center text-gray-500 p-6">
+    No hay datos disponibles
+</div>
+
+
