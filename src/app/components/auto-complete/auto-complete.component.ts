@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { debounceTime, filter, Observable, switchMap } from 'rxjs';
-import { Country } from '../../app.component';
-import { WeatherService } from '../../services/weather.service';
+import { WeatherService } from '../../core/services/weather.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { Country } from '../../core/interfaces/Country.interface';
 
 @Component({
   selector: 'app-auto-complete',
@@ -16,7 +17,10 @@ export class AutoCompleteComponent {
   filteredOptions$: Observable<Country[]>;
   searchControl = new FormControl('');
 
-  constructor(private weatherService: WeatherService) {
+  constructor(
+    private weatherService: WeatherService,
+    private router: Router
+  ) {
     this.filteredOptions$ = this.searchControl.valueChanges.pipe(
       debounceTime(300),
       filter(term => !!term && term.trim() !== ''),
@@ -26,7 +30,15 @@ export class AutoCompleteComponent {
 
   selectOption(option: string): void {
     this.showDropdown = false;
-    this.weatherService.current(option).subscribe(res => this.weatherService.setOption(res))
+    this.weatherService.current(option).subscribe(
+      res => {
+        this.weatherService.setOption(res);
+        this.router.navigate(['detail']);
+      },
+      error => {
+        console.error('Error al obtener el clima:', error);
+      }
+    );
   }
 
   hideDropdown() {
