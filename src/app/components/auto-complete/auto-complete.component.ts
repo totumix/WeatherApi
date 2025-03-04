@@ -6,10 +6,11 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Country } from '../../core/interfaces/Country.interface';
 import { WeatherSignalService } from '../../core/signals/weather-signal.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-auto-complete',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, TranslateModule],
   templateUrl: './auto-complete.component.html',
   styleUrl: './auto-complete.component.css'
 })

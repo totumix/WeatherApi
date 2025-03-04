@@ -30,36 +30,37 @@
     </div>
 
     <div class="mt-4 w-full justify-center flex">
-        <span (click)="toggleAccordion(i)" class="font-semibold cursor-pointer text-gray-800 hover:underline">Más
-            detalles</span>
+        <span (click)="toggleAccordion(i)" class="font-semibold cursor-pointer text-gray-800 hover:underline">
+            {{ 'DETAIL' | translate}}
+        </span>
     </div>
 
     <div *ngIf="accordionStates[i]" class="grid grid-cols-2 gap-4 text-gray-700 mt-2">
         <div>
-            <p class="font-semibold">Sensación térmica:</p>
+            <p class="font-semibold">{{'THERMAL' | translate }} :</p>
             <p>{{ favorite?.current?.feelslike_c ?? 'N/A' }}°C</p>
         </div>
         <div>
-            <p class="font-semibold">Humedad:</p>
+            <p class="font-semibold">{{'HUMIDITY' | translate }} :</p>
             <p>{{ favorite?.current?.humidity ?? 'N/A' }}%</p>
         </div>
         <div>
-            <p class="font-semibold">Viento:</p>
+            <p class="font-semibold">{{'WIND' | translate }} :</p>
             <p>
                 {{ favorite?.current?.wind_kph ?? 'N/A' }} km/h
                 ({{ favorite?.current?.wind_dir || 'Dirección desconocida' }})
             </p>
         </div>
         <div>
-            <p class="font-semibold">Presión:</p>
+            <p class="font-semibold">{{'PRESSURE' | translate }} :</p>
             <p>{{ favorite?.current?.pressure_mb ?? 'N/A' }} mb</p>
         </div>
         <div>
-            <p class="font-semibold">Precipitación:</p>
+            <p class="font-semibold">{{'PRECIPITATION' | translate }} :</p>
             <p>{{ favorite?.current?.precip_mm ?? 'N/A' }} mm</p>
         </div>
         <div>
-            <p class="font-semibold">Visibilidad:</p>
+            <p class="font-semibold">{{'VISIBILITY' | translate }} :</p>
             <p>{{ favorite?.current?.vis_km ?? 'N/A' }} km</p>
         </div>
     </div>
@@ -67,15 +68,15 @@
 <div class="flex justify-center mt-4">
     <button (click)="prevPage()" [disabled]="currentPage === 1"
         class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mx-1">
-        Anterior
+        {{'BACK' | translate}}
     </button>
 
     <span class="px-4 py-2 general-bg text-white rounded-lg">
-        {{ currentPage }} de {{ totalPages }}
+        {{ currentPage }} {{'OF' | translate}} {{ totalPages }}
     </span>
 
     <button (click)="nextPage()" [disabled]="currentPage === totalPages"
         class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mx-1">
-        Siguiente
+        {{'NEXT' | translate}}
     </button>
 </div>

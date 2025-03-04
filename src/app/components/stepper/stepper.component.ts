@@ -1,19 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-stepper',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslateModule],
   templateUrl: './stepper.component.html',
   styleUrl: './stepper.component.css'
 })
 export class StepperComponent {
 
   steps = [
-    { route: '/detail', label: 'Detalles' },
-    { route: '/favorites', label: 'Favoritos' },
-    { route: '/record', label: 'Historial' }
+    { route: '/detail', label: 'DETAIL' },
+    { route: '/favorites', label: 'FAVORITES' },
+    { route: '/record', label: 'RECORD' }
   ];
   selectedStep = 0;
 

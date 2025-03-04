@@ -3,10 +3,11 @@ import { Component, computed, effect } from '@angular/core';
 import { WeatherService } from '../../core/services/weather.service';
 import { WeatherResponse } from '../../core/interfaces/WeatherResponse.interface';
 import { WeatherSignalService } from '../../core/signals/weather-signal.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-detail',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css'
 })

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WeatherResponse } from '../../core/interfaces/WeatherResponse.interface';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-favorites',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './favorites.component.html',
   styleUrl: './favorites.component.css'
 })

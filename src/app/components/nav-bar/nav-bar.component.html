@@ -1,5 +1,17 @@
 <nav class="bg-blue-600 p-4 general-bg">
     <div class="container mx-auto flex justify-between items-center">
-        <a class="text-white text-lg font-bold">WeatherAPI</a>
+      <!-- Nombre de la aplicación -->
+      <a class="text-white text-lg font-bold">WeatherAPI</a>
+  
+      <!-- Contenedor de las banderas para seleccionar idioma -->
+      <div class="flex items-center space-x-2">
+        <!-- Bandera de español -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/1200px-Flag_of_Spain.svg.png"
+          alt="Español" class="w-6 h-4 cursor-pointer" (click)="selectLanguage('es')">
+        <!-- Bandera de inglés -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg"
+          alt="English" class="w-6 h-4 cursor-pointer" (click)="selectLanguage('en')">
+      </div>
     </div>
-</nav>
+  </nav>
+  

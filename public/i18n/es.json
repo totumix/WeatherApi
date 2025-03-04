@@ -1,0 +1,21 @@
+{
+    "FAVORITES": "Favoritos",
+    "RECORD": "Historial",
+    "DETAIL" : "Detalle",
+    "NOT_FOUND" : "No se encontraron coincidencias",
+    "PLACEHOLDER_TEXT" : "Escribe una ciudad o un pais",
+    "NO_DATA" : "No hay datos disponibles",
+    "THERMAL" : "Sensación térmica",
+    "HUMIDITY" : "Humedad",
+    "WIND" : "Viento",
+    "PRESSURE" : "Presión",
+    "PRECIPITATION" : "Precipitación",
+    "VISIBILITY" : "Visibilidad",
+    "BACK" : "Volver",
+    "NEXT" : "Siguiente",
+    "OF" : "de",
+    "CITY" : "Ciudad",
+    "STATUS" : "Estado",
+    "LOCAL_HOUR" : "Hora local",
+    "TEMPERATURE" : "Temperatura"
+}

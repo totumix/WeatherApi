@@ -2,10 +2,10 @@
     <table class="min-w-full border border-gray-300 rounded-lg hidden md:table">
       <thead class="general-bg text-white">
         <tr>
-          <th class="px-4 py-2 text-left sm:text-center">Ciudad</th>
-          <th class="px-4 py-2 text-left sm:text-center">Temperatura</th>
-          <th class="px-4 py-2 text-left sm:text-center">Estado</th>
-          <th class="px-4 py-2 text-left sm:text-center">Hora Local</th>
+          <th class="px-4 py-2 text-left sm:text-center">{{'CITY' | translate}}</th>
+          <th class="px-4 py-2 text-left sm:text-center">{{'TEMPERATURE' | translate}}</th>
+          <th class="px-4 py-2 text-left sm:text-center">{{'STATUS' | translate}}</th>
+          <th class="px-4 py-2 text-left sm:text-center">{{'LOCAL_HOUR' | translate}} </th>
         </tr>
       </thead>
       <tbody class="text-gray-700">
@@ -32,16 +32,16 @@
 <div class="flex justify-center mt-4">
     <button (click)="prevPage()" [disabled]="currentPage === 1"
         class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mx-1">
-        Anterior
+        {{'BACK' | translate}}
     </button>
 
     <span class="px-4 py-2 general-bg text-white rounded-lg">
-         {{ currentPage }} de {{ totalPages }}
+      {{ currentPage }} {{'OF' | translate}} {{ totalPages }}
     </span>
 
     <button (click)="nextPage()" [disabled]="currentPage === totalPages"
         class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg mx-1">
-        Siguiente
+        {{'NEXT' | translate}}
     </button>
 </div>
 

@@ -33,37 +33,37 @@
 
     <div  class="grid grid-cols-2 gap-4 text-gray-700">
         <div>
-            <p class="font-semibold">Sensación térmica:</p>
+            <p class="font-semibold">{{'THERMAL' | translate }} :</p>
             <p>{{ countryDetail()?.current?.feelslike_c ?? 'N/A' }}°C</p>
         </div>
         <div>
-            <p class="font-semibold">Humedad:</p>
+            <p class="font-semibold">{{'HUMIDITY' | translate }} :</p>
             <p>{{ countryDetail()?.current?.humidity ?? 'N/A' }}%</p>
         </div>
         <div>
-            <p class="font-semibold">Viento:</p>
+            <p class="font-semibold">{{'WIND' | translate }} :</p>
             <p>
                 {{ countryDetail()?.current?.wind_kph ?? 'N/A' }} km/h
                 ({{ countryDetail()?.current?.wind_dir || 'Dirección desconocida' }})
             </p>
         </div>
         <div>
-            <p class="font-semibold">Presión:</p>
+            <p class="font-semibold">{{'PRESSURE' | translate }} :</p>
             <p>{{ countryDetail()?.current?.pressure_mb ?? 'N/A' }} mb</p>
         </div>
         <div>
-            <p class="font-semibold">Precipitación:</p>
+            <p class="font-semibold">{{'PRECIPITATION' | translate }} :</p>
             <p>{{ countryDetail()?.current?.precip_mm ?? 'N/A' }} mm</p>
         </div>
         <div>
-            <p class="font-semibold">Visibilidad:</p>
+            <p class="font-semibold">{{'VISIBILITY' | translate }} :</p>
             <p>{{ countryDetail()?.current?.vis_km ?? 'N/A' }} km</p>
         </div>
     </div>
 </div>
 
 <div *ngIf="!countryDetail()" class="text-center text-gray-500 p-6">
-    No hay datos disponibles
+    {{'NO_DATA' | translate}}
 </div>
 
 

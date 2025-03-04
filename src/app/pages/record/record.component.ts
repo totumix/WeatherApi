@@ -4,10 +4,11 @@ import { WeatherService } from '../../core/services/weather.service';
 import { Router } from '@angular/router';
 import { WeatherResponse } from '../../core/interfaces/WeatherResponse.interface';
 import { WeatherSignalService } from '../../core/signals/weather-signal.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-record',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './record.component.html',
   styleUrl: './record.component.css'
 })
