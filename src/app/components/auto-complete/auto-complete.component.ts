@@ -5,6 +5,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Country } from '../../core/interfaces/Country.interface';
+import { WeatherSignalService } from '../../core/signals/weather-signal.service';
 
 @Component({
   selector: 'app-auto-complete',
@@ -19,6 +20,7 @@ export class AutoCompleteComponent {
 
   constructor(
     private weatherService: WeatherService,
+    private signalWeather : WeatherSignalService,
     private router: Router
   ) {
     this.filteredOptions$ = this.searchControl.valueChanges.pipe(
@@ -32,7 +34,7 @@ export class AutoCompleteComponent {
     this.showDropdown = false;
     this.weatherService.current(option).subscribe(
       res => {
-        this.weatherService.setOption(res);
+        this.signalWeather.setOption(res);
         this.router.navigate(['detail']);
       },
       error => {
