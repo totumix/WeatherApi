@@ -1,0 +1,20 @@
+<div class="w-full flex justify-center items-center  ">
+    <img style="width: 15%;" src="svg/weather.svg" alt="imagen">
+    <div class="relative w-64">
+        <input type="text" [formControl]="searchControl" (focus)="showDropdown = true" (blur)="hideDropdown()"
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Escribe una ciudad o país..." />
+        <ul *ngIf="showDropdown && (filteredOptions$ | async) as options"
+            class="absolute left-0 w-full mt-1 bg-white border rounded-lg shadow-lg">
+            <ng-container *ngIf="options.length > 0; else noResults">
+                <li *ngFor="let option of options" (click)="selectOption(option.name)"
+                    class="px-4 py-2 hover:bg-blue-100 cursor-pointer">
+                    {{ option.name }}
+                </li>
+            </ng-container>
+            <ng-template #noResults>
+                <li class="px-4 py-2 text-gray-500">No se encontraron coincidencias</li>
+            </ng-template>
+        </ul>
+    </div>
+</div>
