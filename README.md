@@ -11,6 +11,8 @@ ng serve
 ```
 Node version : 22.14.0
 
+Todo está resuelto en la rama : master
+
 ¡Hola, buen día!
 
 Mi nombre es Juan Sebastián Chávez Ramos, soy desarrollador Full Stack con experiencia en JavaScript. Esta es mi solución a la prueba técnica. Utilicé la WeatherAPI y consumí los dos servicios necesarios para completar la tarea.
