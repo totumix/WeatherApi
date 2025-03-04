@@ -1,0 +1,12 @@
+<div class="flex items-center justify-center space-x-4 my-4">
+  <div *ngFor="let step of steps; let i = index" (click)="selectStep(i,step.route)"
+    class="cursor-pointer flex items-center px-4 py-2 border rounded-lg"
+    [ngClass]="selectedStep === i ? 'general-bg text-white' : 'bg-gray-100 text-gray-700'">
+    <span class="mr-2">
+      <ng-container *ngIf="i === 0">📄</ng-container>
+      <ng-container *ngIf="i === 1">⭐</ng-container>
+      <ng-container *ngIf="i === 2">📜</ng-container>
+    </span>
+    {{ step.label }}
+  </div>
+</div>
